@@ -7,7 +7,7 @@ client.login('請輸入機器人token')
 // Load mineflayer
 const mineflayer = require('mineflayer')
 const bot = mineflayer.createBot({
-  host: 'mcfallout.net', 
+  host: '遊戲伺服器IP', 
     port:25565, 
     username: config.username,
     password: config.password,
