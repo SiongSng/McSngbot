@@ -1,4 +1,6 @@
-點此連結前往下載(https://github.com/rrt467778/zombified_piglin-EXP-Bot/releases)
+點此連結前往下載
+==============
+(https://github.com/rrt467778/zombified_piglin-EXP-Bot/releases)
 ===============================================================================
 豬人經驗塔掛機Bot 版本V.1.0.4
 使用教學:
