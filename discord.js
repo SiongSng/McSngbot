@@ -17,5 +17,5 @@ bot.once('spawn', () => {
     console.log('Minecraft 殭屍豬人塔Bot 啟動成功 請勿關閉此視窗')
    setInterval(function () {
        channel.send(`${bot.username}目前經驗等級為${bot.experience.level}級`);
-   }, 60000)
+   }, 請填入發送間隔時間(單位毫秒))
 })
