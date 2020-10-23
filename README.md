@@ -16,3 +16,4 @@
 logs皆可以到我的DC伺服器的豬人塔bot-logs 查看紀錄
 
 不會用可以私訊DC:菘菘#8663  或者到菘菘的DISCORD伺服器(https://discord.com/invite/5w9BUM4)
+如果遇到BUG或者想要新增的功能，請到這裡issues
