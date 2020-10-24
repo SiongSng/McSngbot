@@ -1,6 +1,6 @@
    [點我前往下載mcfallout Bot](https://github.com/rrt467778/mcfallout-Bot/releases)
 ===============================================================
-![mcfallout](https://imgur.dcard.tw/cdQkFXQ.png"廢土伺服器logo")    
+![mcfallout](https://imgur.dcard.tw/cdQkFXQ.png "廢土伺服器logo")    
 
 # 支援平台
 | Windows| MacOS | Linux |
