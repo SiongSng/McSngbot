@@ -3,6 +3,7 @@
 ![mcfallout](https://imgur.dcard.tw/cdQkFXQ.png "廢土伺服器logo")    
 
 ## 這個Bot可以讓你不用開Minecraft就能享受掛機和跟遊戲內的人聊天，還有很多功能等你來探索
+## 此Bot專門為廢土伺服器所設計
 
 # 主要功能    
 ### 1.自動掛機您想要掛的地點  
