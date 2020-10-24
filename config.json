@@ -1,4 +1,7 @@
 {
-  "username": "請輸入Minecraft帳號",
-  "password": "請輸入Minecraft密碼"
+  "username": "Minecraft帳號",
+  "password": "Minecraft密碼",
+  "Publicity": "設施或者交易宣傳內容", //宣傳內容請務必輸入正確，違反廢土規定，請自行負責(設施宣傳格式 !/warp 公共傳送點名稱 內容，交易頻道格式 $ 內容)
+  "whitelist":["ID","ID","ID","ID"]    //請把ID改成你要私訊bot指令的Minecraft帳號ID
 }
+// 切勿把""刪除 否則程式將無法執行  如果不會使用請私訊DC(菘菘#8663)
