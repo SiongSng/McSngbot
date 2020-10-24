@@ -1,0 +1,31 @@
+{
+  "name": "mcfallout Bot",
+  "version": "1.0.5",
+  "main": "Discord.js",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "await": "^0.2.6",
+    "discord.js": "^12.3.1",
+    "fetch": "^1.1.0",
+    "ffmpeg-static": "^4.2.7",
+    "flow": "^0.2.3",
+    "mineflayer": "^2.32.0",
+    "mojang-api": "0.0.2",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.1",
+    "typescript": "^4.0.3",
+    "webhook-discord": "^3.7.7"
+  },
+  "devDependencies": {
+    "ytdl-core": "^3.2.2"
+  },
+  "bin": "discord.js",
+  "pkg": {
+    "assets": [
+      "/node_modules/discord.js",
+      "/node_modules/mineflayer",
+      "/node_modules/webhook-discord",
+      "/node_modules/http-signature"
+    ]
+  }
+}
