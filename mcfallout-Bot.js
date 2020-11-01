@@ -1,15 +1,15 @@
 const config = require(`${process.cwd()}/config.json`)
 const Discord = require('discord.js');
 const client = new Discord.Client();
-client.login('請輸入您的Discord bot tokev')
-const webhook = require("webhook-discord")
+client.login('請輸入Discord token')
+const webhook = require("webhook-Discord")
 const tokens = require('prismarine-tokens-fixed');
-const Hook = new webhook.Webhook(`請輸入您的Webhook網址`)
+const Hook = new webhook.Webhook(`請輸入Webhook網址`)
 const mineflayer = require('mineflayer');
 const { connect } = require('http2')
 function connects(){
   const bot = mineflayer.createBot({
-    host: '伺服器遊戲IP', 
+    host: '伺服器IP', 
       port:25565, 
       username: config.username,
       password: config.password,
@@ -117,7 +117,7 @@ bot.once('spawn', () => {
       bot.chat(`${config.Publicity}  w`)
   },3600000)
   setInterval(function (){
-    bot.chat(config.Transaction-promotion)
+    bot.chat(config.Transaction)
 },605000)
   const readline = require('readline');
 const rl = readline.createInterface({
@@ -129,19 +129,8 @@ rl.on('line', function (line) {
         bot.chat(line)
     })
 })
-setInterval(() => {
-  const mobFilter = e => e.type === 'mob' && e.mobType === ('實體ID')
-  const mob = bot.nearestEntity(mobFilter)
-
-    if (!mob) return;
-
-    const pos = mob.position;
-    bot.lookAt(pos, true, () => {
-        bot.attack(mob);
-    });
-}, 1000);
-bot.on("message", async function (jsonMsg) {
-            const health = /目標生命 \: ❤❤❤❤❤❤❤❤❤❤ \/ ([\S]+)/g.exec(jsonMsg.toString())
+     bot.on("message", async function (jsonMsg) {
+            const health = /目標生命 \: ❤❤❤❤❤❤❤❤❤❤ \/ ([\S]+)/g.exec(jsonMsg.toString()) //ignore system call
             const whitelist = config.whitelist
             if(jsonMsg.toString().toLowerCase().includes(`系統>`)||
                 health ||
@@ -150,7 +139,7 @@ bot.on("message", async function (jsonMsg) {
                 console.log(jsonMsg.toAnsi())
             }
   if (jsonMsg.toString().startsWith(`[廢土伺服] :`) &&
-      jsonMsg.toString().toLowerCase().includes(`想要你傳送到 該玩家 的位置!`)){
+      jsonMsg.toString().toLowerCase().includes(`想要你傳送到 該玩家 的位置!`)){ //切訊息
       let dec = jsonMsg.toString().split(/ +/g);
       let playerid = dec[2] //2
       if(whitelist.includes(playerid)){
@@ -160,7 +149,7 @@ bot.on("message", async function (jsonMsg) {
       }
   }
   if(jsonMsg.toString().startsWith(`[廢土伺服] :`) &&
-      jsonMsg.toString().toLowerCase().includes(`想要傳送到 你 的位置`)){  
+      jsonMsg.toString().toLowerCase().includes(`想要傳送到 你 的位置`)){  //切訊息
       let dec = jsonMsg.toString().split(/ +/g);
       let playerid = dec[2] //2
       if(whitelist.includes(playerid)){
@@ -169,16 +158,28 @@ bot.on("message", async function (jsonMsg) {
           bot.chat(`/tno`)
       }
   }
-  if (jsonMsg.toString().startsWith(`[收到私訊`)) {  
+  if (jsonMsg.toString().startsWith(`[收到私訊`)) {  //切訊息
     const channel = client.channels.cache.find(channel => channel.id ===`頻道ID`)
-      let dec = jsonMsg.toString().split(/ +/g);
-      let lo = dec[2].split(`]`)//
-      let playerid = dec.splice(lo.length)[0].split("]") 
-      let msg = jsonMsg.toString().slice(18 + playerid.length).split(" ")
+    const msg = (jsonMsg.toString())
+    let dec = msg.split(/ +/g);
+    let lo = dec[2].split(`]`)//
+    let playerid = dec.splice(lo.length)[0].split("]") //Minecraft ID
+    let args = msg.slice(10 +playerid[0].length).split(" ")
       if (whitelist.includes(`${playerid[0]}`)) {
           channel.send(`ID : ${playerid[0]}`);
-          channel.send(`msg ${msg[0]}`);
-          switch (msg[0]) {
+          channel.send(`訊息 : ${args[0]}`);
+          switch (args[0]) {
+            case "attack":
+              bot.chat(`/m ${playerid[0]} 已成功開啟自動打怪功能(支援突襲塔、手動式刷怪塔.....)`)
+              setInterval(function(){
+                for (let mobstoattack in bot.entities){
+                    switch (bot.entities[mobstoattack].entityType) {
+                     case 22,62,96:
+                        bot.attack(bot.entities[mobstoattack])
+                }
+               }
+                 },800)
+          break
               case "throwall":
                   for (let i = 9; i <= 46; i++) {
                       bot._client.write("window_click", {
@@ -196,10 +197,10 @@ bot.on("message", async function (jsonMsg) {
                   bot.chat(`/m ${playerid[0]} 等級: ${bot.experience.level} , 經驗值: ${bot.experience.points}  經驗值百分比: ${exp}%`)
                   break
               case "throw":
-                  if (msg[1] !== undefined) {
-                      if (!isNaN(msg[1])) {
-                          if (msg[1] >= 9) {
-                              if (msg[1] <= 46) {
+                  if (args[1] !== undefined) {
+                      if (!isNaN(args[1])) {
+                          if (args[1] >= 9) {
+                              if (args[1] <= 46) {
                                   bot._client.write("window_click", {
                                       windowId: 0,
                                       slot: msg[1],
