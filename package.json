@@ -1,6 +1,6 @@
 {
-  "name": "Bot",
-  "version": "1.0.6",
+  "name": "mcfallout-bot",
+  "version": "1.0.7",
   "main": "Discord.js",
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
