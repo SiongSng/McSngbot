@@ -247,4 +247,8 @@ function connects() {
     })
 }
 
+<<<<<<< Updated upstream
 connects()
+=======
+connects()
+>>>>>>> Stashed changes
