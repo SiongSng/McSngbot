@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+/../../../../../:\code\coding\javascript\.idea/dataSources/
+/dataSources.local.xml
+# 基於編輯器的 HTTP 客戶端請求
+/httpRequests/
