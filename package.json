@@ -1,6 +1,6 @@
 {
   "name": "mcfallout-bot",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "author": "菘菘",
   "dependencies": {
     "discord.js": "^12.4.1",
