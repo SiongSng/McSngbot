@@ -4,12 +4,13 @@ const lang = require(`${process.cwd()}/lang/${settings.language}.json`)
 const nconf = require('nconf');
 const Discord = require('discord.js');
 const client = new Discord.Client();
-client.login('token')
+client.login('Discord token')
 const tokens = require('prismarine-tokens-fixed');
 const mineflayer = require('mineflayer');
 const whitelist = (`[${config.whitelist},Barry23412]`)
 const version = (`V1.0.9`)
 
+console.log(`${lang.discord}`)
 console.log(`${lang.lang}`)
 console.log(`${lang.joinsever}...`)
 
