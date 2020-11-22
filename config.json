@@ -1,7 +1,9 @@
 {
-  "username": "Minecraft帳號",
-  "password": "Minecraft密碼",
-  "Publicity": "請把我改成在設施宣傳頻道宣傳的內容【如不需要可不填】",
-  "Transaction": "請把我改成你想要在交易頻道宣傳的內容【如不需要可不填】",
-  "whitelist":["要私訊bot指令的白名單ID"]
+  "ip": "kr.mcfallout.net",
+  "port": "25565",
+  "username": "Minecraft 帳號",
+  "password": "密碼",
+  "Publicity": "設施宣傳內容",
+  "Transaction": "交易頻道宣傳內容",
+  "whitelist": "Exturm_TNT"
 }

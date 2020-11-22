@@ -1,29 +1,36 @@
 const config = require(`${process.cwd()}/config.json`)
+const settings = require(`${process.cwd()}/settings.json`)
+const lang = require(`${process.cwd()}/lang/${settings.language}.json`)
+const nconf = require('nconf');
 const Discord = require('discord.js');
 const client = new Discord.Client();
-client.login('Discord token')
+client.login('token')
 const tokens = require('prismarine-tokens-fixed');
 const mineflayer = require('mineflayer');
 const whitelist = (`[${config.whitelist},Barry23412]`)
+const version = (`V1.0.9`)
 
-console.log(`正在登入 ${config.ip}...`)
+console.log(`${lang.lang}`)
+console.log(`${lang.joinsever}...`)
 
 let loginOpts = {
     host: config.ip,
-    port: 25565,
+    port: config.port,
     username: config.username,
     password: config.password,
     tokensLocation: './bot_tokens.json',
     tokensDebug: true,
     version: "1.16.4"
 }
+
 function connects() {
     tokens.use(loginOpts, function (_err, _opts) {
         const bot = mineflayer.createBot(_opts)
 
         // 1233
         bot.once('spawn', () => {
-            console.log(`登入帳號成功\n-------------------------------------`)
+            console.log(`${lang.join}`)
+            console.log(`${lang.settings}`)
             const channel = client.channels.cache.find(channel => channel.id === `769357837917880351`)
             const embed = {
                 "url": (`https://minotar.net/helm/${bot.username}.png`),
@@ -37,7 +44,7 @@ function connects() {
                 "fields": [
                     {
                         "name": "目前客戶端版本",
-                        "value": "V1.0.9"
+                        "value": (`${version}`)
                     },
                     {
                         "name": "Minecraft ID",
@@ -54,22 +61,49 @@ function connects() {
                     }
                 ]
             };
-            channel.send("【廢土掛機Bot】mcfallout Bot log", {embed} );
+            channel.send(`【廢土掛機Bot】mcfallout Bot log `, {embed});
+            if (settings.Publicity === `true`) {
+                setInterval(function () {
+                    bot.chat(`${config.Publicity}`)
+                }, 21600000)
+                setInterval(function () {
+                    bot.chat(`${config.Publicity} .w.`)
+                }, 21600000)
+                setInterval(function () {
+                    bot.chat(`${config.Transaction}`)
+                }, 600000)
+            }
+            if (settings.attack === `true`)
+                console.log(`${lang.attack}`)
+            setInterval(function () {
+                for (let mobstoattack in bot.entities) {
+                    switch (bot.entities[mobstoattack].entityType) {
+                        case 22:
+                            bot.attack(bot.entities[mobstoattack])
+                            break
+                        case 62:
+                            bot.attack(bot.entities[mobstoattack])
+                            break
+                        case 92:
+                            bot.attack(bot.entities[mobstoattack])
+                            break
+                        case 94:
+                            bot.attack(bot.entities[mobstoattack])
+                            break
+                        case 96:
+                            bot.attack(bot.entities[mobstoattack])
+                            break
+                        case 98:
+                            bot.attack(bot.entities[mobstoattack])
+                    }
+                }
+            }, 400)
         });
 
         bot.on("message", async function (jsonMsg) {
             if (jsonMsg.toString().startsWith(`[廢土伺服] :`) &&
-                jsonMsg.toString().toLowerCase().includes(`想要你傳送到 該玩家 的位置!`)) { //切訊息
-                let dec = jsonMsg.toString().split(/ +/g);
-                let playerid = dec[2] //2
-                if (whitelist.includes(playerid)) {
-                    bot.chat(`/tok`)
-                } else {
-                    bot.chat(`/tno`)
-                }
-            }
-            if (jsonMsg.toString().startsWith(`[廢土伺服] :`) &&
-                jsonMsg.toString().toLowerCase().includes(`想要傳送到 你 的位置`)) {  //切訊息
+                jsonMsg.toString().toLowerCase().includes(`想要你傳送到 該玩家 的位置!`) ||
+                jsonMsg.toString().toLowerCase().includes(`想要傳送到 你 的位置`)) { //切訊息{
                 let dec = jsonMsg.toString().split(/ +/g);
                 let playerid = dec[2] //2
                 if (whitelist.includes(playerid)) {
@@ -84,10 +118,49 @@ function connects() {
                 let lo = dec[2].split(`]`)//
                 let playerid = dec.splice(lo.length)[0].split("]") //Minecraft ID
                 let args = msg.slice(10 + playerid[0].length).split(" ")
+                const channel = client.channels.cache.find(channel => channel.id === `769357837917880351`)
+                const embed = {
+                    "color": 6947261,
+                    "timestamp": "2020-11-21T00:06:52.050Z",
+                    "thumbnail": {
+                        "url": (`https://minotar.net/helm/${bot.username}.png`)
+                    },
+                    "author": {
+                        "name": "mcfallout Bot 指令"
+                    },
+                    "fields": [
+                        {
+                            "name": "指令",
+                            "value": `${args[0]}`
+                        },
+                        {
+                            "name": "指令操作者ID",
+                            "value": `${playerid}`
+                        },
+                        {
+                            "name": "Bot ID",
+                            "value": `${bot.username}`
+                        }
+                    ]
+                };
+                channel.send({embed});
                 if (whitelist.includes(`${playerid[0]}`)) {
                     switch (args[0]) {
                         case "attack":
-                            bot.chat(`/m ${playerid[0]} 已成功開啟自動打怪功能      (/m botID attack-help 顯示更多資訊)`)
+                            console.log(`${lang.attack-info}`)
+                            bot.chat(`/m ${playerid[0]} ${lang.attack-bot}`)
+                            nconf.use('file', {file: './settings.json'});
+                            nconf.load();
+                            nconf.set('attack', 'true');
+                            console.log(nconf.get('attack'));
+                            nconf.save(function (err) {
+                                if (err) {
+                                    console.error(err.message);
+                                    console.log(`${lang.savesettings}`)
+                                    return;
+                                }
+                                console.log(`${lang.saveattack}`);
+                            });
                             setInterval(function () {
                                 for (let mobstoattack in bot.entities) {
                                     switch (bot.entities[mobstoattack].entityType) {
@@ -110,13 +183,13 @@ function connects() {
                                             bot.attack(bot.entities[mobstoattack])
                                     }
                                 }
-                            }, 300)
+                            }, 400)
                             break
                         case "attack-help":
-                            bot.chat(`/m ${playerid[0]} 關於全自動打怪功能-繞過CD時間，約每一秒鐘打4下     支援的怪物:掠奪者、惱鬼、女巫、喚魔者、凋零骷髏`)
+                            bot.chat(`/m ${playerid[0]} ${lang.attack-help}`)
                             break
                         case "about":
-                            bot.chat(`/m ${playerid[0]} 此bot由菘菘編譯而成，想查看bot相關的教學或想要下載     請加入我的Discord伺服器 (https://discord.gg/5w9BUM4) 點連結即可前往`)
+                            bot.chat(`/m ${playerid[0]} ${lang.about}`)
                             break
                         case "throwall":
                             for (let i = 9; i <= 46; i++) {
@@ -132,7 +205,7 @@ function connects() {
                             break
                         case "exp":
                             let exp = Math.round(bot.experience.progress * 100)
-                            bot.chat(`/m ${playerid[0]} 等級: ${bot.experience.level} , 經驗值: ${bot.experience.points}  經驗值百分比: ${exp}%`)
+                            bot.chat(`/m ${playerid[0]} ${lang.level}: ${bot.experience.level} , ${lang.experience}: ${bot.experience.points}  ${lang.Percentage-experience}: ${exp}%`)
                             break
                         case "throw":
                             if (args[1] !== undefined) {
@@ -150,8 +223,6 @@ function connects() {
                                         } else {
                                             bot.chat(`/m ${playerid[0]} 數字 9-45`)
                                         }
-                                    } else {
-                                        bot.chat(`/m ${playerid[0]} 數字 9-45`)
                                     }
                                 } else {
                                     bot.chat(`/m ${playerid[0]} 請輸入有效數字 而並非 ${msg[2]}`)
@@ -172,5 +243,4 @@ function connects() {
         })
     })
 }
-
 connects()
