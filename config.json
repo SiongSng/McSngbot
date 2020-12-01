@@ -5,5 +5,5 @@
   "password": "密碼",
   "Publicity": "設施宣傳內容",
   "Transaction": "交易頻道宣傳內容",
-  "whitelist": "白名單ID"
+  "whitelist": "指令白名單ID"
 }
