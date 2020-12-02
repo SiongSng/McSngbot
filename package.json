@@ -1,11 +1,10 @@
 {
-  "name": "mcfallout-bot",
-  "version": "1.0.8",
-  "author": "菘菘",
+  "name": "mcsngbot",
+  "version": "1.1.0",
+  "author": "菘菘#8663(Barry23412)",
   "dependencies": {
     "discord.js": "^12.4.1",
     "mineflayer": "^2.32.0",
-    "webhook-discord": "^3.7.7",
     "prismarine-tokens-fixed": "^1.1.2"
   }
 }
