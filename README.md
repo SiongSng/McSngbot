@@ -1,4 +1,7 @@
-   [點我前往下載McSngbot](https://github.com/rrt467778/mcfallout-Bot/releases)
+ [![Discord](https://discord.com/api/guilds/714087332738891857/widget.png)](https://discord.gg/5w9BUM4)
+
+
+ [點我前往下載McSngbot](https://github.com/rrt467778/mcfallout-Bot/releases)
 ===============================================================
 ![mcfallout](https://imgur.dcard.tw/cdQkFXQ.png "廢土伺服器logo")   
 # McSngbot
