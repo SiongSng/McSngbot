@@ -1,6 +1,7 @@
    [點我前往下載McSngbot](https://github.com/rrt467778/mcfallout-Bot/releases)
 ===============================================================
-![mcfallout](https://imgur.dcard.tw/cdQkFXQ.png "廢土伺服器logo")    
+![mcfallout](https://imgur.dcard.tw/cdQkFXQ.png "廢土伺服器logo")   
+# McSngbot
 
 ## 這個Bot可以讓你不用開Minecraft就能享受掛機和跟遊戲內的人聊天，還有很多功能等你來探索
 ## 此Bot專門為廢土伺服器所設計
