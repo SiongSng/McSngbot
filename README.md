@@ -22,4 +22,4 @@
 # 如果遇到BUG或者想要新增的功能，請到[issues](https://github.com/rrt467778/mcfallout-Bot/issues)   
  
 
-[![test](https://discord.com/api/guilds/81384788765712384/widget.png?style=banner1)](https://discord.gg/5w9BUM4)
+[![test](https://discord.com/api/guilds/714087332738891857/widget.png?style=banner1)](https://discord.gg/5w9BUM4)
