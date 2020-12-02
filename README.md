@@ -21,3 +21,5 @@
 # 不會用可以私訊DC:菘菘#8663  或者到[我的的Discord伺服器](https://discord.com/invite/5w9BUM4)   
 # 如果遇到BUG或者想要新增的功能，請到[issues](https://github.com/rrt467778/mcfallout-Bot/issues)   
  
+
+[![test](https://discord.com/api/guilds/81384788765712384/widget.png?style=banner1)](https://discord.gg/5w9BUM4)
