@@ -16,12 +16,8 @@
 ### 8.自動接受tpa & tpahere(需白名單)  
 ### 10.丟棄物品(可指定和全部丟棄)  
 ### 11.自動重連(防止廢土掛掉的時候無法重連)    
+### 12.可直接從discord控制自己的bot(測試中功能)
   
-# 支援平台
-| Windows| MacOS | Linux |
-|:-------|:-----:|------:|
-| 支援 |  支援 |   支援 |  
-
 # 不會用可以私訊DC:菘菘#8663  或者到[我的的Discord伺服器](https://discord.com/invite/5w9BUM4)   
 # 如果遇到BUG或者想要新增的功能，請到[issues](https://github.com/rrt467778/mcfallout-Bot/issues)   
  
