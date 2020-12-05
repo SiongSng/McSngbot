@@ -33,8 +33,8 @@
   
 ### *此Bot專門為廢土伺服器所設計 (其他伺服器也可以用，但要看那個伺服器是否可以掛機)
 
-# 以上有任何問題，或者不會用可以到[我的的Discord伺服器](https://discord.com/invite/5w9BUM4)   
-# 如果遇到BUG或者想要新增的功能，請到[issues](https://github.com/rrt467778/mcfallout-Bot/issues)  也歡迎提供PR(Pull requests)
+## 以上有任何問題，或者不會用可以到[我的的Discord伺服器](https://discord.com/invite/5w9BUM4)   
+## 如果遇到BUG或者想要新增的功能，請到[issues](https://github.com/rrt467778/mcfallout-Bot/issues)  也歡迎提供PR(Pull requests)
 
 
 [![點我進入DC伺服器](https://discord.com/api/guilds/714087332738891857/widget.png?style=banner1)](https://discord.gg/5w9BUM4)
