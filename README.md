@@ -4,20 +4,12 @@
 
 [點我前往下載McSngbot](https://github.com/rrt467778/mcfallout-Bot/releases)
 ===============================================================
-<<<<<<< HEAD
-# McSngbot 簡介 (以下簡介為最新版本為主)
-=======
 # McSngbot 簡介 (以下簡介為最新版本為主)       
->>>>>>> main
 
 
 #### 是否覺得一直開著Minecraft主視窗掛機很耗電腦資源呢?
 #### 是否覺得用Wurst或手動打突襲塔很痛苦呢?
-<<<<<<< HEAD
 #### 是否覺得很多bot都要很多錢，還有安全疑慮呢?
-=======
-#### 是否覺得很多bot都要很多錢，還有安全疑慮呢?       
->>>>>>> main
 
 ## 恭喜您!!! 看到這個bot，他不僅免費，還很安全並且是開源bot
 ```
@@ -27,11 +19,7 @@
 抄也抄不好，後來我努來研究寫bot，雖然還只是普普通通的程度，但是我希望能透過免費讓大家體驗到bot的樂趣。
 ```
 
-<<<<<<< HEAD
-# 主要功能、特色
-=======
 # 主要功能、特色    
->>>>>>> main
 ``` 1.自動打怪物(支援突襲塔)
 2.自動掛機獲得物資....
 3.自動宣傳訊息(設施宣傳&交易頻道)  
@@ -46,19 +34,11 @@
 12.bot死亡後自動重生並且/back(需在settings.json設定是否開啟)
 13.可直接從discord控制自己的bot(測試中功能)
 ```   
-<<<<<<< HEAD
 
-### *此Bot專門為廢土伺服器所設計 (其他伺服器也可以用，但要看那個伺服器是否可以掛機)
-
-## 以上有任何問題，或者不會用可以到[我的的Discord伺服器](https://discord.com/invite/5w9BUM4)
-=======
-  
-### *此Bot專門為廢土伺服器所設計 (其他伺服器也可以用，但要看那個伺服器是否可以掛機)
-
+### *此Bot專門為廢土伺服器所設計 (其他伺服器也可以用，但要看那個伺服器是否可以掛機)    
 ## 以上有任何問題，或者不會用可以到[我的的Discord伺服器](https://discord.com/invite/5w9BUM4)   
->>>>>>> main
-## 如果遇到BUG或者想要新增的功能，請到[issues](https://github.com/rrt467778/mcfallout-Bot/issues)  也歡迎提供PR(Pull requests
-## 使用說明&維基百科:https://github.com/Barry23412/McSngbot/wiki
+## 如果遇到BUG或者想要新增的功能，請到[issues](https://github.com/rrt467778/mcfallout-Bot/issues)  也歡迎提供PR(Pull requests)   
+## 使用說明&維基百科:https://github.com/Barry23412/McSngbot/wiki  
 
 
-[![點我進入DC伺服器](https://discord.com/api/guilds/714087332738891857/widget.png?style=banner1)](https://discord.gg/5w9BUM4)
+[![點我進入DC伺服器](https://discord.com/api/guilds/714087332738891857/widget.png?style=banner1)](https://discord.gg/5w9BUM4)  
