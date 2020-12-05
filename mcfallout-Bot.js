@@ -5,7 +5,7 @@ const Discord = require('discord.js');  //讀取discord.js模塊
 const client = new Discord.Client();
 const tokens = require('prismarine-tokens-fixed');  //讀取prismarine-tokens-fixed(驗證緩存)模塊
 const mineflayer = require('mineflayer');  //讀取mineflayer模塊
-const version = (`V1.1.0`);  //定義bot版本
+const version = (`V1.1.1`);  //定義bot版本
 const {MessageEmbed} = require("discord.js"); //定義訊息遷入讀取discord.js模塊
 
 //驗證版本
@@ -52,7 +52,7 @@ function connects() {
 
                 .addField(`Minecraft ID`, bot.username, true)
                 .addField(`UUID`, bot.player.uuid);
-            client.channels.cache.find(channel => channel.id === `769357837917880351`).send(`【廢土掛機Bot】mcfallout Bot log `, infoembed);
+            client.channels.cache.find(channel => channel.id === `769357837917880351`).send(`【McSngbot】logs `, infoembed);
             //自動宣傳
             if (settings.Publicity === `true`) {
                 setInterval(function () {
@@ -74,20 +74,12 @@ function connects() {
             });
             rl.on('line', function (line) {
                 bot.chat(line)
-            });
-            // 自動重生&/back回到死亡點
-            if (settings.death === `true`) {
-                bot.on("death", function () {
-                    setTimeout(function () {
-                        bot.chat("/back")
-                    }, 3000)
-
-                })
-            }
+            })
             if (settings.attack === `true`) {
-                require("./commands/attack")(bot,settings);
+                require("./commands/attack")(bot);
+                require("./commands/Discardeditems")(bot);
             }
-        })
+        });
         bot.on("message", async function (jsonMsg) {
             const health = /目標生命 \: ❤❤❤❤❤❤❤❤❤❤ \/ ([\S]+)/g.exec(jsonMsg.toString()) //ignore system call
             if (health ||
@@ -110,20 +102,12 @@ function connects() {
                     bot.chat(`/tno`)
                 }
             }
-
             if (jsonMsg.toString().startsWith(`[收到私訊`)) {  //切訊息
                 const msg = (jsonMsg.toString())
                 let dec = msg.split(/ +/g);
                 let lo = dec[2].split(`]`)//
                 let playerid = dec.splice(lo.length)[0].split("]") //Minecraft ID
                 let args = msg.slice(10 + playerid[0].length).split(" ")
-                const cmdembed = new MessageEmbed()
-                    .setTitle(`McSngbot指令`)
-                    .setColor(6947261)
-                    .addField(`指令`, args[0], true)
-                    .addField(`指令操作者ID`, playerid, true)
-                    .addField(`Bot ID`, bot.username, true)
-                client.channels.cache.find(channel => channel.id === `769357837917880351`).send(cmdembed);
                 if (whitelist.includes(`${playerid[0]}`) ||
                     (whitelist2.includes(`${playerid[0]}`))) {
                     switch (args[0]) {
@@ -134,11 +118,15 @@ function connects() {
                             } else if (settings.attack === `false`) {
                                 console.log(`${lang.attackinfo}`)
                                 bot.chat(`/m ${playerid[0]} ${lang.attackbot}`)
+                                await require("./commands/Discardeditems")(bot);
                                 await require("./commands/attack")(bot, settings);
                             }
                             break
                         case "attack-help":
                             bot.chat(`/m ${playerid[0]} ${lang.attackhelp}`)
+                            break
+                        case "cmd":
+                            bot.chat(args[1])
                             break
                         case "about":
                             bot.chat(`/m ${playerid[0]} ${lang.about}`)
@@ -147,12 +135,6 @@ function connects() {
                             bot.chat(`/m ${playerid[0]} 正在關閉bot中...`)
                             console.log(`正在關閉bot中...`)
                             process.exit()
-                            break
-                        case "reload":
-                            bot.chat(`/m ${playerid[0]} ${lang.reload}`)
-                            setTimeout(function () {
-                                connects()
-                            }, 5000)
                             break
                         case "throwall":
                             for (let i = 9; i <= 46; i++) {
