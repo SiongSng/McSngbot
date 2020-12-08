@@ -1,4 +1,3 @@
-// let Type = [22,62,92,94,96,98]
 module.exports = async (bot) => {
     setInterval(function () {
         for (let mobstoattack in bot.entities) {
@@ -11,6 +10,5 @@ module.exports = async (bot) => {
                 bot.attack(bot.entities[mobstoattack])
             }
         }
-    }, 200)
+    }, 650)
 }
-//22 62 92 94 96 98

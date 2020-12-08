@@ -1,10 +1,11 @@
 {
   "name": "mcsngbot",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "author": "菘菘#8663(Barry23412)",
   "dependencies": {
     "discord.js": "^12.4.1",
     "mineflayer": "^2.32.0",
-    "prismarine-tokens-fixed": "^1.1.2"
+    "prismarine-tokens-fixed": "^1.1.2",
+    "silly-datetime": "^0.1.2"
   }
 }

@@ -31,8 +31,8 @@
 8.丟棄物品(可指定和全部丟棄)  
 9.自動重連(防止廢土掛掉的時候無法重連) 
 10.能透過`settings.json`設定功能是否開啟
-11.多國語言支援(繁體中文、簡體中文、English) 歡迎PR(Pull requests)提交翻譯
-12.bot死亡後自動重生並且/back(需在settings.json設定是否開啟)
+11.bot死亡後自動重生並且/back(需在settings.json設定是否開啟)
+12.自動生成logs檔案，快速判斷錯誤!
 13.可直接從discord控制自己的bot(測試中功能)
 ```   
 

@@ -1,5 +1,7 @@
 {
-  "language": "zh_tw",
+  "publicity": "設施宣傳內容",
+  "Transaction": "交易頻道宣傳內容",
   "attack": "true",
-  "Publicity": "true"
+  "Publicity": "true",
+  "health": "true"
 }
