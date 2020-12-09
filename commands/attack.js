@@ -1,6 +1,6 @@
 module.exports = async (bot) => {
     setInterval(function () {
-        for (let mobstoattack in bot.entities) {
+      for (let mobstoattack in bot.entities) {
             if (bot.entities[mobstoattack].entityType === 22 ||
                 (bot.entities[mobstoattack].entityType === 62) ||
                 (bot.entities[mobstoattack].entityType === 92) ||
@@ -9,6 +9,6 @@ module.exports = async (bot) => {
                 (bot.entities[mobstoattack].entityType === 98)) {
                 bot.attack(bot.entities[mobstoattack])
             }
-        }
+            }
     }, 650)
 }

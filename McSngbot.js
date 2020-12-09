@@ -1,36 +1,23 @@
+//version 1.1.3
 const config = require(`${process.cwd()}/config.json`)  //讀取config(組態)
 const settings = require(`${process.cwd()}/settings.json`) //讀取設定檔案
-console.log(`讀取設定成功`)
-const Discord = require('discord.js');  //讀取discord.js模塊
-const client = new Discord.Client();
 const fs = require('fs'); //讀取fs模塊
 const tokens = require('prismarine-tokens-fixed');  //讀取prismarine-tokens-fixed(驗證緩存)模塊
 const mineflayer = require('mineflayer');  //讀取mineflayer模塊
-const version = (`V1.1.2`);  //定義bot版本
 
+//取得時間
 const sd = require('silly-datetime'); //讀取silly-datetime模塊
 const time =sd.format(new Date(), 'YYYY-MM-DD HH-mm-ss'); //獲得系統時間
+fs.mkdir('./logs', { recursive: true }, (err) => {
+    if (err) throw err;
+});
 
 fs.writeFile(`./logs/log-${time}.txt`, '【McSngbot】bot載入中...',"utf8", function (err) {
     if (err)
         console.log(`錯誤: ${err}`);
     else
-        console.log(`McSngbot】bot載入中...`);
+        console.log(`【McSngbot】bot載入中...`);
 });
-
-const {MessageEmbed} = require("discord.js"); //定義訊息遷入讀取discord.js模塊
-
-//驗證版本
-client.on("ready", async function () {  //當discord bot 啟動時
-    console.log(`正在檢查更新中... (如果沒有顯示 【您目前客戶端的版本已經是最新】 ，就代表版本過舊可以到: https://discord.gg/5w9BUM4 更新)`)
-    client.channels.cache.find(channel => channel.id === `781479174913261589`).send(`${version}`)  //發送bot版本進行驗證
-});
-client.on('message', msg => {
-    if (msg.content === `${version}-您的版本已經是最新的`) {  //偵測版本是否是最新的
-        console.log(`您目前客戶端的版本已經是最新的(版本為:${version})`)
-    }
-});
-console.log(`對此bot有任何問題可以在 https://discord.gg/5w9BUM4 取得支援`)
 
 let loginOpts = {  //登入資訊
     host: config.ip,  //伺服器ip
@@ -43,30 +30,19 @@ let loginOpts = {  //登入資訊
 }
 
 
-function connects(bot) {
-    tokens.use(loginOpts, function (_err, _opts) {
-        const bot = mineflayer.createBot(_opts)
+function connects() {
+    tokens.use(loginOpts, function (_err, _opts) { //使用驗證緩存
+        const bot = mineflayer.createBot(_opts) //定義bot為mineflayer類別中的createBot
 
         bot.once('spawn', () => {   //bot啟動時
-            console.log(`登入帳號成功\n-------------------------------------`)
-            //發送客戶端訊息
-            const infoembed = new MessageEmbed()
-                .setTitle(`【McSngbot】log `)
-                .setColor("BLUE")
-                .setThumbnail(`https://minotar.net/helm/${bot.username}.png`)
-                .addField(`伺服器IP:`,config.ip ,true)
-                .addField(`目前客戶端版本`, version)
-                .addField(`Discord 帳號`, `${config.Discord}`, true)
-                .addField(`Minecraft ID`, bot.username, true)
-                .addField(`UUID`, bot.player.uuid);
-            client.channels.cache.find(channel => channel.id === `769357837917880351`).send(infoembed);
+            console.log(`bot載入完成\n-------------------------------------`)
             //自動宣傳
             if (settings.Publicity === `true`) {
                 setInterval(function () {
-                    bot.chat(`${settings.publicity}`)
+                    bot.chat(`${settings.Pycontent}`)
                 }, 21600000)
                 setInterval(function () {
-                    bot.chat(`${settings.publicity} .w.`)
+                    bot.chat(`${settings.Toncontent} .w.`)
                 }, 21600000)
                 setInterval(function () {
                     bot.chat(`${settings.Transaction}`)
@@ -80,6 +56,8 @@ function connects(bot) {
                 terminal: false
             });
             rl.on('line', function (line) {
+                let data = `\n[cmd] ${line}`
+                require("./function/logs")(fs, data, time);
                 bot.chat(line)
             })
             // 讀取設定檔案並且開始打怪
@@ -90,29 +68,28 @@ function connects(bot) {
         });
         bot.on("message", async function (jsonMsg) {
             const health = /目標生命 \: ❤❤❤❤❤❤❤❤❤❤ \/ ([\S]+)/g.exec(jsonMsg.toString()) //清除目標生命
-            if (settings.health === `true`) {
+            if (settings.health === `false`) {
                 if (health) {
                     return;
                 } else {
-                    fs.appendFile(`./logs/log-${time}.txt`, `\n${jsonMsg}`, function (err) {
-                        if (err)
-                            console.log(err);
-                    });
+                    let data = `\n${jsonMsg}`
+                    await require("./function/logs")(fs, data, time);
                     console.log(jsonMsg.toAnsi())
                 }
             }
-            if (settings.health === `false`) {
-                fs.appendFile(`./logs/log-${time}.txt`, `\n${jsonMsg.message}`,"utf8", function (err) {
-                });
+            if (settings.health === `true`) {
+                let data = `\n${jsonMsg}`
+                await require("./function/logs")(fs, data, time);
                 console.log(jsonMsg.toAnsi())
             }
         })
-        const whitelist = (config.whitelist)
-        const whitelist2 = "Barry23412"
+        const whitelist = (config.whitelist)  //定義白名單
+        const whitelist2 = "Barry23412"  //默認我為白名單(Barry23412,菘菘)
+        //自動接受或拒絕/tpa /tpahere
         bot.on("message", async function (jsonMsg) {
             if (jsonMsg.toString().startsWith(`[廢土伺服] :`) &&
                 jsonMsg.toString().toLowerCase().includes(`想要你傳送到 該玩家 的位置!`) ||
-                jsonMsg.toString().toLowerCase().includes(`想要傳送到 你 的位置`)) { //切訊息{
+                jsonMsg.toString().toLowerCase().includes(`想要傳送到 你 的位置`)) {
                 let dec = jsonMsg.toString().split(/ +/g);
                 let playerid = dec[2] //2
                 if (whitelist.includes(playerid) || whitelist2.includes(playerid)) {
@@ -121,15 +98,16 @@ function connects(bot) {
                     bot.chat(`/tno`)
                 }
             }
-            if (jsonMsg.toString().startsWith(`[收到私訊`)) {  //切訊息
+
+            if (jsonMsg.toString().startsWith(`[收到私訊`)) {  //偵測訊息開頭為"[收到私訊"
                 const msg = (jsonMsg.toString())
                 let dec = msg.split(/ +/g);
                 let lo = dec[2].split(`]`)//
-                let playerid = dec.splice(lo.length)[0].split("]") //Minecraft ID
-                let args = msg.slice(10 + playerid[0].length).split(" ")
+                let playerid = dec.splice(lo.length)[0].split("]") //取得Minecraft ID
+                let args = msg.slice(10 + playerid[0].length).split(" ")  //取得指令內容
                 if (whitelist.includes(`${playerid[0]}`) ||
                     (whitelist2.includes(`${playerid[0]}`))) {
-                    switch (args[0]) {
+                    switch (args[0]) { //指令前綴
                         case "attack":
                             if (settings.attack === `true`) {
                                 bot.chat(`/m ${playerid[0]} 已成功開啟自動打怪功能 (/m botID attack-help 顯示更多資訊`)
@@ -139,19 +117,19 @@ function connects(bot) {
                                 await require("./commands/attack")(bot);
                             }
                             break
-                        case "attack-help":
-                            bot.chat(`/m ${playerid[0]} 關於全自動打怪功能-繞過CD時間，約每一秒鐘打4下     支援的怪物:掠奪者、惱鬼、女巫、喚魔者、凋零骷髏`)
-                            break
                         case "cmd":
-                            bot.chat(args[1])
+                            let cmd = msg.slice(10 +playerid[0].length + 4).split(" ")
+                            bot.chat(`${cmd}`)
                             break
                         case "about":
                             bot.chat(`/m ${playerid[0]} 此bot由菘菘編譯而成，想查看bot相關的教學或想要下載     歡迎加入我的Discord伺服器 (https://discord.gg/5w9BUM4) 點連結即可前往`)
                             break
                         case "exit":
                             bot.chat(`/m ${playerid[0]} 正在關閉bot中...`)
-                            console.log(`正在關閉bot中...`)
-                            process.exit()
+                            console.log(`5秒後關閉bot...`)
+                            setTimeout(function () {
+                                process.exit()
+                            },5000)
                             break
                         case "throwall":
                             for (let i = 9; i <= 46; i++) {
@@ -198,19 +176,23 @@ function connects(bot) {
                 }
             }
         })
-        //kick 被伺服器踢出
+        //kick 被伺服器踢出事件
         bot.once('kicked', (reason, loggedIn) => {
-            console.log(`【McSngbot】[資訊] 客戶端與伺服器斷線   原因 : ${reason}`)
+            let time1 =sd.format(new Date(), 'YYYY-MM-DD HH-mm-ss'); //獲得系統時間
+            let data = `【McSngbot】[資訊] 客戶端與伺服器斷線\n斷線時間:${time1}   原因 :\n${reason}`
+            require("./function/logs")(fs, data, time);
+            console.log(data)
         });
         //斷線自動重連
         bot.once('end', () => {
-            console.log(`【McSngbot】[資訊] 客戶端與伺服器斷線 ，正在自動重新連線中...`)
+            let time1 =sd.format(new Date(), 'YYYY-MM-DD HH-mm-ss'); //獲得系統時間
+            let data =`【McSngbot】[資訊] 客戶端與伺服器斷線 ，5秒後將會自動重新連線...\n斷線時間:${time1}`
+            console.log(data)
+            require("./function/logs")(fs, data, time);
             setTimeout(function () {
-                connects(bot)
+                connects();
             }, 5000)
         });
     })
 }
-connects()
-//登入discord bot
-client.login('your discord bot token')
+connects();
