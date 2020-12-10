@@ -83,7 +83,8 @@ function connects() {
                 console.log(jsonMsg.toAnsi())
             }
         })
-        const whitelist = (config.whitelist)  //定義白名單
+        const whitelist = ["Barry23412",config.whitelist]  //無須定義兩個白名單
+//         const whitelist = (config.whitelist)  //定義白名單
         const whitelist2 = "Barry23412"  //默認我為白名單(Barry23412,菘菘)
         //自動接受或拒絕/tpa /tpahere
         bot.on("message", async function (jsonMsg) {
@@ -92,7 +93,7 @@ function connects() {
                 jsonMsg.toString().toLowerCase().includes(`想要傳送到 你 的位置`)) {
                 let dec = jsonMsg.toString().split(/ +/g);
                 let playerid = dec[2] //2
-                if (whitelist.includes(playerid) || whitelist2.includes(playerid)) {
+                if (whitelist.includes(playerid)) {
                     bot.chat(`/tok`)
                 } else {
                     bot.chat(`/tno`)
@@ -105,8 +106,7 @@ function connects() {
                 let lo = dec[2].split(`]`)//
                 let playerid = dec.splice(lo.length)[0].split("]") //取得Minecraft ID
                 let args = msg.slice(10 + playerid[0].length).split(" ")  //取得指令內容
-                if (whitelist.includes(`${playerid[0]}`) ||
-                    (whitelist2.includes(`${playerid[0]}`))) {
+                if (whitelist.includes(`${playerid[0]}`){
                     switch (args[0]) { //指令前綴
                         case "attack":
                             if (settings.attack === `true`) {
