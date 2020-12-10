@@ -1,14 +1,11 @@
 module.exports = async (bot) => {
-    setInterval(function () {
+    setInterval(async function () {
+        let list = [22,62,92,94,96,98]
       for (let mobstoattack in bot.entities) {
-            if (bot.entities[mobstoattack].entityType === 22 ||
-                (bot.entities[mobstoattack].entityType === 62) ||
-                (bot.entities[mobstoattack].entityType === 92) ||
-                (bot.entities[mobstoattack].entityType === 94) ||
-                (bot.entities[mobstoattack].entityType === 96) ||
-                (bot.entities[mobstoattack].entityType === 98)) {
-                bot.attack(bot.entities[mobstoattack])
-            }
+            if (list.includes(bot.entities[mobstoattack].entityType))     //無須過多= 
+              {
+               await bot.attack(bot.entities[mobstoattack])  //使用await 同步
+                 }
             }
     }, 650)
 }
