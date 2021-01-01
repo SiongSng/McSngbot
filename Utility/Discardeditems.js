@@ -1,6 +1,6 @@
 module.exports = async (bot) => {
     //自動丟垃圾
-    let itemsStayed = [
+    let itemsStayed = [   //不要被丟棄的物品
         "diamond_sword",
         "netherite_sword",
         "totem_of_undying",
@@ -16,7 +16,7 @@ module.exports = async (bot) => {
         } else if (itemsStayed.includes(item.name)) {
             await toss(items)
         } else {
-            bot.toss(item.type, item.metadata, item.count, err => toss(items));
+            await bot.toss(item.type, item.metadata, item.count, err => toss(items));
         }
     })(inventory.items().values());
 }

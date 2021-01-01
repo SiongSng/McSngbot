@@ -5,7 +5,8 @@ const tokens = require('prismarine-tokens-fixed');  //讀取prismarine-tokens-fi
 const mineflayer = require('mineflayer');  //讀取mineflayer模塊
 
 //取得時間
-const sd = require('silly-datetime'); //讀取silly-datetime模塊
+const sd = require('silly-datetime');
+const fs = require("fs"); //讀取silly-datetime模塊
 const time =sd.format(new Date(), 'YYYY-MM-DD HH-mm-ss'); //獲得系統時間
 
 let loginOpts = {  //登入資訊
@@ -21,9 +22,11 @@ let loginOpts = {  //登入資訊
 function connects() {
     tokens.use(loginOpts, function (_err, _opts) { //使用驗證緩存
         const bot = mineflayer.createBot(_opts) //定義bot為mineflayer類別中的createBot
-
+        fs.mkdir('./logs', { recursive: true }, (err) => {
+            if (err) throw err;
+        });
         bot.once('spawn', () => {   //bot啟動時
-            console.log(`McSngbot載入完成\n`)
+            console.log(`McSngbot載入完成`)
             //自動宣傳
             if (settings.Publicity === true) {
                 setInterval(function () {
@@ -51,14 +54,14 @@ function connects() {
         });
         bot.on("message", async function (jsonMsg) {
             let health = /目標生命 \: ❤❤❤❤❤❤❤❤❤❤ \/ ([\S]+)/g.exec(jsonMsg.toString()); //清除目標生命
-            if (settings.health === false) {
+            if (!settings.health) {
                 if (health) {
                     return;
                 } else {
                     console.log(jsonMsg.toAnsi());
                 }
             }
-            if (settings.health === true) {
+            if (settings.health) {
                 console.log(jsonMsg.toAnsi());
             }
         })
@@ -95,8 +98,11 @@ function connects() {
                             }
                             break
                         case "cmd":
-                            let cmd = msg.slice(10 +playerid[0].length + 4).split(" ")
-                            bot.chat(`${cmd}`)
+                            let cmd = "";
+                            for(let i = 1; i >= args.length; i++){
+                                cmd += args[i]+" ";
+                            }
+                            bot.chat(cmd);
                             break
                         case "about":
                             bot.chat(`/m ${playerid[0]} 此bot由菘菘編譯而成，想查看bot相關的教學或想要下載     歡迎加入我的Discord伺服器 (https://discord.gg/5w9BUM4) 點連結即可前往`)
@@ -127,8 +133,8 @@ function connects() {
                             }
                             break
                         case "exp":  //查詢經驗值
-                            let exp = Math.round(bot.experience.progress * 100)
-                            bot.chat(`/m ${playerid[0]} 經驗等級: ${bot.experience.level} ,經驗值: ${bot.experience.points}  經驗值百分比: ${exp}%`)
+                            let exp = Math.round(bot.experience.progress * 100);
+                            bot.chat(`/m ${playerid[0]} 等級: ${bot.experience.level} 總經驗值: ${bot.experience.points} 百分比: ${exp}%`);
                             break
                         case "throw":  //丟棄指定物品
                             if (args[1] !== undefined) {
@@ -161,13 +167,15 @@ function connects() {
         })
         //kick 被伺服器踢出事件
         bot.once('kicked', (reason) => {
-            let time1 =sd.format(new Date(), 'YYYY-MM-DD HH-mm-ss'); //獲得系統時間
-            console.log(`[資訊] 客戶端被伺服器踢出 @${time1}   原因 :\n${reason}`)
+            let time1 = sd.format(new Date(), 'YYYY-MM-DD HH-mm-ss'); //獲得系統時間
+            console.log(`[資訊] 客戶端被伺服器踢出 @${time1}   \n造成的原因:${reason}`)
+            fs.writeFile(`./logs/error-${time}.txt`, `[\n資訊] 客戶端被伺服器踢出 @${time1} \n造成的原因:${reason}`, "utf8");
         });
         //斷線自動重連
         bot.once('end', () => {
             let time1 =sd.format(new Date(), 'YYYY-MM-DD HH-mm-ss'); //獲得系統時間
             console.log(`[資訊] 客戶端與伺服器斷線 ，5秒後將會自動重新連線...\n@${time1}`)
+            fs.writeFile(`./logs/error-${time}.txt`, `\n[資訊] 客戶端與伺服器斷線 ，5秒後將會自動重新連線...\n@${time1}`, "utf8");
             setTimeout(function () {
                 connects();
             }, 5000)
