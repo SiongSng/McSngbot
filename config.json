@@ -3,6 +3,6 @@
   "port": "25565",
   "username": "Minecraft 帳號",
   "password": "密碼",
-  "whitelist": ["指令白名單ID"],
-  "Discord": "discord ID請務必填寫"
+  "auth": "mojang",
+  "whitelist": ["指令白名單ID"]
 }

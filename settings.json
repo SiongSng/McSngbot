@@ -3,5 +3,6 @@
   "Tont": "交易頻道宣傳內容",
   "attack": true,
   "Publicity": true,
-  "health": false
+  "health": false,
+  "AutoEat": true
 }
