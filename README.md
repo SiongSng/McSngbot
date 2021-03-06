@@ -38,7 +38,7 @@
 
 ### *此Bot專門為廢土伺服器所設計 (其他伺服器也可以用，但要看那個伺服器是否可以掛機)    
 ## 以上有任何問題，或者不會用可以到[我的的Discord伺服器](https://discord.com/invite/5w9BUM4)   
-## 如果遇到BUG或者想要新增的功能，請到[issues](https://github.com/rrt467778/mcfallout-Bot/issues)  也歡迎提供PR(Pull requests)   
+## 如果遇到BUG或者想要新增的功能，請到[issues](https://github.com/rrt467778/mcfallout-Bot/issues)
 ## 使用說明&維基百科:https://github.com/Barry23412/McSngbot/wiki  
 
 
