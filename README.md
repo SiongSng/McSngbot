@@ -37,6 +37,8 @@
 12.自動生成logs檔案，快速判斷錯誤!
 13.可直接從discord控制自己的bot(測試中功能)
 ```   
+## 授權
+本著作係採用 [創用 姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW) 授權條款授權   
 
 ### *此Bot專門為廢土伺服器所設計 (其他伺服器也可以用，但要看那個伺服器是否可以掛機)    
 ## 以上有任何問題，或者不會用可以到[我的的Discord伺服器](https://discord.com/invite/5w9BUM4)   
