@@ -4,9 +4,11 @@
 [![CC](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/) 
 
 
-[點我前往下載McSngbot](https://github.com/rrt467778/mcfallout-Bot/releases)
+# 此專案已經停止更新及支援。
+
+### [點我前往下載McSngbot](https://github.com/rrt467778/mcfallout-Bot/releases)
 ===============================================================
-# McSngbot 簡介 (以下簡介為最新版本為主)       
+## McSngbot 簡介 (以下簡介為最新版本為主)       
 
 
 #### 是否覺得一直開著Minecraft主視窗掛機很耗電腦資源呢?
@@ -14,12 +16,6 @@
 #### 是否覺得很多bot都要很多錢，還有安全疑慮呢?
 
 ## 恭喜您!!! 看到這個bot，他不僅免費，還很安全並且是開源bot
-```
-開發者的主旨: 當初覺得用wurst打怪很麻煩，就去問了那些寫bot的開發者，
-是怎麼寫的，那時我真是聰明(嘲諷自己)，居然直接跟別人要原始碼，
-想必一定是被痛打一頓，後來我還沒學乖，連寫程式都用"抄"的還被笑說，
-抄也抄不好，後來我努來研究寫bot，雖然還只是普普通通的程度，但是我希望能透過免費讓大家體驗到bot的樂趣。
-```
 ## 當然如果認為有安全疑慮，就不要用xd  
  
 # 主要功能、特色    
