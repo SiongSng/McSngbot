@@ -42,4 +42,4 @@
 ## 使用說明&維基百科:https://github.com/Barry23412/McSngbot/wiki  
 
 
-[![點我進入DC伺服器](https://discord.com/api/guilds/714087332738891857/widget.png?style=banner1)](https://discord.gg/5w9BUM4)  
+[![點我進入DC伺服器](https://discord.com/api/guilds/815819580840607807/widget.png?style=banner1)](https://discord.gg/5xApZtgV2u)  
