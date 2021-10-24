@@ -3,7 +3,8 @@
 [![GitHub downloads](https://img.shields.io/github/downloads/rrt467778/McSngbot/total.svg)](https://github.com/rrt467778/McSngbot/releases/latest)
 [![CC](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/) 
 
-
+# 此專案已經停止更新及支援。
+# 此專案已經停止更新及支援。
 # 此專案已經停止更新及支援。
 
 ### [點我前往下載McSngbot](https://github.com/rrt467778/mcfallout-Bot/releases)
