@@ -3,9 +3,7 @@
 [![GitHub downloads](https://img.shields.io/github/downloads/rrt467778/McSngbot/total.svg)](https://github.com/rrt467778/McSngbot/releases/latest)
 [![CC](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/) 
 
-# 此專案已經停止更新及支援。
-# 此專案已經停止更新及支援。
-# 此專案已經停止更新及支援。
+# 本軟體已永久停止更新與支援，請改使用新版 https://github.com/SiongSng/Better-MCFallout-Bot 這款 Bot 
 
 ### [點我前往下載McSngbot](https://github.com/rrt467778/mcfallout-Bot/releases)
 ===============================================================
